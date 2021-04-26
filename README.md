@@ -23,7 +23,8 @@ Tips and workarounds I had to use to complete the tutorial
 
 ## Create a function in Azure Functions that can write data to Azure Cache for Redis
 
-- Succeeded in creating function using [CLI tutorial](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-csharp?tabs=azure-cli%2Ccurl) using the Gitpod development environment in this repository. When I tried the local tutorial, I ran into problems building the function and libraries.
+- Created function using the command line interface (CLI) tutorial called [Quickstart: Create a C# function in Azure from the command line](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-csharp?tabs=azure-cli%2Ccurl) using the Gitpod development environment in this repository. [Launch the online development environment](https://gitpod.io/#https://github.com/justintungonline/azure-sa-function-tests)
+- The Gitpod environment is this repository has all the prerequisites for the CLI tutorial (dotnetcore, Azure CLI, Azure Function Tools Core ) preinstalled in the workspace's Ubuntu image.
 
 [Reference of files generated for the Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?tabs=csharp#generated-project-files)
 
@@ -37,7 +38,6 @@ az functionapp create --resource-group hsc-dev-46-cc-0042-e0042-sandbox --consum
 func azure functionapp publish sandboxfunction1
 ```
 
-Things I tried during the create a function app tutorial, but did not work for me
-- Manually create function in Azure portal and code only using ASE. Create new function (with new SA, App insights), go to "Function", Add HTTP trigger function, paste the code from the tutorial. Access the App Service Editor (ASE) via the function under "Development Tools" on the left side of the function configurations in the Azure Portal. Follow the tutorial on project.json, run.csx, and host.json. In the ASE, Press the run button to test the function. A page should come up indicating the function is running.
+When I tried the tutorial locally in VS Code and using the Azure cloud shell as another options there were build error when building the function despite having the prerequisites.
 
 ## Update the Stream Analytics job with the function as output <--- I stopped at this step
