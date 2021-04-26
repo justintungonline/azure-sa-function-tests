@@ -3,8 +3,7 @@
 # About
 The repository is for testing Azure Stream Analytics working with Azure Functions and following steps in this [Microsoft Tutorial: Run Azure Functions from Azure Stream Analytics jobs](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-with-azure-functions)
 
-# Troubleshooting Tip
-Tips and workarounds I had to use to complete the tutorial
+# Tips and Workarounds Used to Complete the Tutorial
 
 ## Create a Stream Analytics job with Event Hubs as input
 
@@ -24,7 +23,7 @@ Tips and workarounds I had to use to complete the tutorial
 ## Create a function in Azure Functions that can write data to Azure Cache for Redis
 
 - Created function using the command line interface (CLI) tutorial called [Quickstart: Create a C# function in Azure from the command line](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-csharp?tabs=azure-cli%2Ccurl) using the Gitpod development environment in this repository. [Launch the online development environment](https://gitpod.io/#https://github.com/justintungonline/azure-sa-function-tests)
-- The Gitpod environment is this repository has all the prerequisites for the CLI tutorial (dotnetcore, Azure CLI, Azure Function Tools Core ) preinstalled in the workspace's Ubuntu image.
+- The Gitpod environment is this repository has all the prerequisites for the CLI tutorial (dotnetcore, Azure CLI, Azure Function Tools Core ) preinstalled in the workspace's Ubuntu image. No local installs are required. The image has been tested with the steps in the tutorial to build the function and deploy it to Azure.
 
 [Reference of files generated for the Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?tabs=csharp#generated-project-files)
 
