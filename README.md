@@ -5,12 +5,14 @@ The repository is for testing Azure Stream Analytics working with Azure Function
 
 # Tips and Workarounds Used to Complete the Tutorial
 
+List of things I had to choose in the tutorial where the tutorial doesn't specific exact steps or options to follow.
+
 ## Create a Stream Analytics job with Event Hubs as input
 
 [Tutorial: Analyze fraudulent call data with Stream Analytics and visualize results in Power BI dashboard](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-real-time-fraud-detection)
 
 - Stopped at "Configure job output section describing connecting to PowerBI to visualize data". Can continue tutorial learn about PowerBI integration.
-- When configuring the Stream Analytics SA input, select connection string and then the EH policy name you created.
+- When configuring the Stream Analytics input, select connection string and then the Azure Event Hub policy name you created.
 
 ## Create an Azure Cache for Redis instance
 
