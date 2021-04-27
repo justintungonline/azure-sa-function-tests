@@ -35,7 +35,7 @@ Helpful commands
 az account set --subscription <subscription>
 
 # Create Azure Function app with existing resource group and storage account I created in advance of creating the function, then publish
-az functionapp create --resource-group hsc-dev-46-cc-0042-e0042-sandbox --consumption-plan-location canadacentral --runtime dotnet --functions-version 3 --name sandboxfunction1 --storage-account sandboxstorageaccountehs
+az functionapp create --resource-group <my-resource-group-name> --consumption-plan-location canadacentral --runtime dotnet --functions-version 3 --name sandboxfunction1 --storage-account sandboxstorageaccount
 func azure functionapp publish sandboxfunction1
 ```
 
