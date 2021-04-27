@@ -1,6 +1,8 @@
+# See https://www.gitpod.io/docs/config-docker
 image:
   file: .gitpod.Dockerfile
 
+# See https://www.gitpod.io/docs/config-start-tasks
 tasks:
   # Build and run Function which will open a web preview (see ports section below) on port 7071 when started
   - init: 
@@ -8,6 +10,7 @@ tasks:
   - command: az --version && func --version && dotnet --list-sdks && cd /workspace/azure-sa-function-tests/LocalFunctionProj/ && func start --csharp
 
 github:
+  # Speeds up builds, see https://www.gitpod.io/docs/prebuilds
   prebuilds:
     # enable for the master/default branch (defaults to true)
     master: true
