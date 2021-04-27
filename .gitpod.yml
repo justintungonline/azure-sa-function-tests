@@ -3,9 +3,9 @@ image:
 
 tasks:
   # Build and run Function which will open a web preview (see ports section below) on port 7071 when started
-  - init: cd /workspace/azure-sa-function-tests/LocalFunctionProj/ && func start --csharp
+  - init: 
   # Visual check that Azure CLI, Azure Functions Core Tools, and dotnet core are available to troubleshoot any build issues
-  - command: az --version && func --version && dotnet --list-sdks
+  - command: az --version && func --version && dotnet --list-sdks && cd /workspace/azure-sa-function-tests/LocalFunctionProj/ && func start --csharp
 
 # List the ports you want to expose and what to do when they are served. See https://www.gitpod.io/docs/config-ports/
 ports:
