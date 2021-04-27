@@ -2,8 +2,9 @@ image:
   file: .gitpod.Dockerfile
 
 tasks:
-  - init: 'echo "TODO: Replace with init/build command"'
-    command: 'echo "TODO: Replace with command to start project"'
+  - init: 
+  # Visual check that Azure CLI, Azure Functions Core Tools, and dotnet core are available
+  - command: az --version && func --version && dotnet --list-sdks && cd cd /workspace/azure-sa-function-tests/LocalFunctionProj/ && func start
 
 # List the ports you want to expose and what to do when they are served. See https://www.gitpod.io/docs/config-ports/
 ports:
