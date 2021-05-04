@@ -41,4 +41,6 @@ func azure functionapp publish sandboxfunction1
 
 When I tried the tutorial locally in VS Code and using the Azure cloud shell as another options there were build error when building the function despite having the prerequisites.
 
-## Update the Stream Analytics job with the function as output <--- I stopped at this step
+**Update function to make one in tutorial  <--- I stopped at this step**
+
+## Update the Stream Analytics job with the function as output
