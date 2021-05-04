@@ -31,6 +31,10 @@ List of things I had to choose in the tutorial where the tutorial doesn't specif
 
 Helpful commands
 ```sh
+# Build and run function
+func start --csharp
+...
+
 # Set subscription
 az account set --subscription <subscription>
 
