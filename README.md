@@ -5,7 +5,7 @@ The repository is for testing Azure Stream Analytics working with Azure Function
 
 # Tips and Workarounds Used to Complete the Tutorial
 
-List of things I had to choose in the tutorial where the tutorial doesn't specific exact steps or options to follow.
+List of things I had to choose in the tutorial where the tutorial doesn't say exact steps or options to follow.
 
 ## Create a Stream Analytics job with Event Hubs as input
 
@@ -26,7 +26,7 @@ List of things I had to choose in the tutorial where the tutorial doesn't specif
 
 - Created function using the command line interface (CLI) tutorial called [Quickstart: Create a C# function in Azure from the command line](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-csharp?tabs=azure-cli%2Ccurl) using the Gitpod development environment in this repository. [Launch the online development environment](https://gitpod.io/#https://github.com/justintungonline/azure-sa-function-tests)
 - The Gitpod environment is this repository has all the prerequisites for the CLI tutorial (dotnetcore, Azure CLI, Azure Function Tools Core ) preinstalled in the workspace's Ubuntu image. No local installs are required. The image has been tested with the steps in the tutorial to build the function and deploy it to Azure.
-- Dependencies to install NewtonSoft and Functions using dotnet CLI in project
+- Dependencies to install StackExchange.Redis and Functions using dotnet CLI in project
 ```sh
 
 # https://www.nuget.org/packages/StackExchange.Redis/
@@ -43,6 +43,7 @@ Helpful commands
 ```sh
 # Build and run function
 func start --csharp
+
 ...
 
 # Set subscription
@@ -53,7 +54,7 @@ az functionapp create --resource-group <my-resource-group-name> --consumption-pl
 func azure functionapp publish sandboxfunction1
 ```
 
-When I tried the tutorial locally in VS Code and using the Azure cloud shell as another options there were build error when building the function despite having the prerequisites.
+When I tried the tutorial locally in VS Code and using the Azure cloud shell as another options there were build errors when building the function despite having the prerequisites.
 
 **Update function to make one in tutorial  <--- I stopped at this step**
 
