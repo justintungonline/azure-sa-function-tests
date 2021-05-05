@@ -26,6 +26,16 @@ List of things I had to choose in the tutorial where the tutorial doesn't specif
 
 - Created function using the command line interface (CLI) tutorial called [Quickstart: Create a C# function in Azure from the command line](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-csharp?tabs=azure-cli%2Ccurl) using the Gitpod development environment in this repository. [Launch the online development environment](https://gitpod.io/#https://github.com/justintungonline/azure-sa-function-tests)
 - The Gitpod environment is this repository has all the prerequisites for the CLI tutorial (dotnetcore, Azure CLI, Azure Function Tools Core ) preinstalled in the workspace's Ubuntu image. No local installs are required. The image has been tested with the steps in the tutorial to build the function and deploy it to Azure.
+- Dependencies to install NewtonSoft and StackExchange using dotnet CLI in project
+```sh
+
+# https://www.nuget.org/packages/StackExchange.Redis/
+dotnet add package StackExchange.Redis --version 2.2.4
+
+https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/
+dotnet add package Microsoft.NET.Sdk.Functions --version 3.0.11
+
+```
 
 [Reference of files generated for the Function App](https://docs.microsoft.com/en-us/azure/azure-functions/functions-develop-vs-code?tabs=csharp#generated-project-files)
 
