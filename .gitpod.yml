@@ -6,6 +6,9 @@ tasks:
   - init: 'echo "TODO: Replace with init/build command"'
 # Visual check that Azure CLI, Azure Functions Core Tools, and dotnet core are available to troubleshoot any build issues
 # Build and run Function which will open a web preview (see ports section below) on port 7071 when started
+# - command: echo "#"'!'"/bin/sh" >> gitsync.sh
+# - command: echo "git add . && git commit -m\"commit\" && git push" >> gitsync.sh
+# - command: chmod +x gitsync.sh
   - command: az --version && func --version && dotnet --list-sdks && cd /workspace/azure-sa-function-tests/LocalFunctionProj/ 
 # && func start --csharp
 # List the ports you want to expose and what to do when they are served. See https://www.gitpod.io/docs/config-ports/
