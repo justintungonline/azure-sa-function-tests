@@ -1,1 +1,0 @@
-az functionapp create --resource-group hsc-dev-46-cc-0042-e0042-sandbox --consumption-plan-location canadacentral --runtime dotnet --functions-version 3 --name sandboxfunction2 --storage-account sandboxstorageaccountehs
