@@ -3,7 +3,7 @@ image:
 
 # See https://www.gitpod.io/docs/config-start-tasks
 tasks:
-  - init: 'echo "TODO: Replace with init/build command"'
+#  - init: 'echo "TODO: Replace with init/build command"'
 # Visual check that Azure CLI, Azure Functions Core Tools, and dotnet core are available to troubleshoot any build issues
 # Build and run Function which will open a web preview (see ports section below) on port 7071 when started
 # - command: echo "#"'!'"/bin/sh" >> gitsync.sh

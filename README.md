@@ -49,15 +49,22 @@ func start --csharp
 
 ...
 
+# Login to Azure
+
+az login
+
 # Set subscription
 az account set --subscription <subscription>
 
 # Create Azure Function app with existing resource group and storage account I created in advance of creating the function, then publish
-az functionapp create --resource-group <my-resource-group-name> --consumption-plan-location canadacentral --runtime dotnet --functions-version 3 --name sandboxfunction1 --storage-account sandboxstorageaccount
-func azure functionapp publish sandboxfunction1
+# functions-version will determine the dotnet version
+az functionapp create --resource-group <my-resource-group-name> --consumption-plan-location canadacentral --functions-version 3 --name sandboxfunction1 --storage-account sandboxstorageaccount
+
+# Publish c# function
+func azure functionapp publish sandboxfunction1 --csharp
 ```
 
-When I tried the tutorial locally in VS Code and using the Azure cloud shell as another options there were build errors when building the function despite having the prerequisites.
+When I tried the tutorial locally in VS Code and using the Azure cloud shell as another options there were build errors when building the function despite having the prerequisites. Running functions CLI compilation was ok.
 
 *Update function to make one in tutorial  <--- I stopped at this step*
 
