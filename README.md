@@ -64,8 +64,20 @@ az functionapp create --resource-group <my-resource-group-name> --consumption-pl
 func azure functionapp publish sandboxfunction1 --csharp
 ```
 
-When I tried the tutorial locally in VS Code and using the Azure cloud shell as another options there were build errors when building the function despite having the prerequisites. Running functions CLI compilation was ok.
+### Azure Function in this repository
 
-*Update function to make one in tutorial  <--- I stopped at this step*
+- Code was created and can be built using the [Azure Functions CLI tutorial](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-csharp?tabs=azure-cli%2Cbrowser). When using the VS Code functions tutorial or Azure cloud shell as another option there were build errors when building the function despite having the prerequisites said in the tutorial. 
+- The `HttpExample.cs` is modified from the tutorial to fit a C# implementation instead of a C# script.
+- Azure Functions and Redis cache has a [known issue](https://github.com/StackExchange/StackExchange.Redis/issues/1655) where this setting needs to be added to the `.csproj` file . Without the line, there will be a `Could not load file or assembly 'System.IO.Pipelines` error when the function tries to get a connection.
+
+```xml
+<PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+    <_FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput> <!-- *** this line was added *** -->
+  </PropertyGroup>
+```
 
 ## Update the Stream Analytics job with the function as output
+
+<--- I stopped here
