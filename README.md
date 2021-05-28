@@ -34,7 +34,7 @@ List of things I had to choose in the tutorial where the tutorial doesn't say ex
 # https://www.nuget.org/packages/StackExchange.Redis/
 dotnet add package StackExchange.Redis --version 2.2.4
 
-https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/
+# https://www.nuget.org/packages/Microsoft.NET.Sdk.Functions/
 dotnet add package Microsoft.NET.Sdk.Functions --version 3.0.11
 
 ```
