@@ -26,6 +26,16 @@ List of things I had to choose in the tutorial where the tutorial doesn't say ex
 ### Create a function in Azure Functions that can write data to Azure Cache for Redis
 
 - Created function using the command line interface (CLI) tutorial called [Quickstart: Create a C# function in Azure from the command line](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-csharp?tabs=azure-cli%2Ccurl) using the Gitpod development environment in this repository. [Launch the online development environment](https://gitpod.io/#https://github.com/justintungonline/azure-sa-function-tests)
+    - The `HttpExample.cs` is modified from the tutorial to fit a C# implementation instead of a C# script.
+    - Azure Functions and Redis cache has a [known issue](https://github.com/StackExchange/StackExchange.Redis/issues/1655) where this line below needs to be added to the `.csproj` file . Without the line, there will be a `Could not load file or assembly 'System.IO.Pipelines` error when the function tries to get a connection.
+
+    ```xml
+    <PropertyGroup>
+        <TargetFramework>netcoreapp3.1</TargetFramework>
+        <AzureFunctionsVersion>v3</AzureFunctionsVersion>
+        <_FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput> <!-- *** this line was added *** -->
+    </PropertyGroup>
+    ```
 - The Gitpod environment is this repository has all the prerequisites for the CLI tutorial (dotnetcore, Azure CLI, Azure Function Tools Core ) preinstalled in the workspace's Ubuntu image. No local installs are required. The image has been tested with the steps in the tutorial to build the function and deploy it to Azure.
 - Dependencies to install StackExchange.Redis and Functions using dotnet CLI in project
 
@@ -50,7 +60,6 @@ func start --csharp
 ...
 
 # Login to Azure
-
 az login
 
 # Set subscription
@@ -62,20 +71,6 @@ az functionapp create --resource-group <my-resource-group-name> --consumption-pl
 
 # Publish c# function
 func azure functionapp publish sandboxfunction1 --csharp
-```
-
-### Azure Function in this repository
-
-- Code was created and can be built using the [Azure Functions CLI tutorial](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-csharp?tabs=azure-cli%2Cbrowser). When using the VS Code functions tutorial or Azure cloud shell as another option there were build errors when building the function despite having the prerequisites said in the tutorial. 
-- The `HttpExample.cs` is modified from the tutorial to fit a C# implementation instead of a C# script.
-- Azure Functions and Redis cache has a [known issue](https://github.com/StackExchange/StackExchange.Redis/issues/1655) where this setting needs to be added to the `.csproj` file . Without the line, there will be a `Could not load file or assembly 'System.IO.Pipelines` error when the function tries to get a connection.
-
-```xml
-<PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-    <AzureFunctionsVersion>v3</AzureFunctionsVersion>
-    <_FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput> <!-- *** this line was added *** -->
-  </PropertyGroup>
 ```
 
 ## Update the Stream Analytics job with the function as output
