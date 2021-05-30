@@ -72,7 +72,3 @@ az functionapp create --resource-group <my-resource-group-name> --consumption-pl
 # Publish c# function
 func azure functionapp publish sandboxfunction1 --csharp
 ```
-
-## Update the Stream Analytics job with the function as output
-
-<--- I stopped here
