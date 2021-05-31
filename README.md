@@ -74,11 +74,19 @@ az functionapp create --resource-group <my-resource-group-name> --consumption-pl
 func azure functionapp publish sandboxfunction1 --csharp
 ```
 
-## Post Tutorial Security Improvements
+## Post Tutorial Improvements
+
+### Automated Deployment to Azure with GitHub action
+
+Follow [Continuous delivery by using GitHub Action](https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-github-actions?tabs=dotnet) to use the [Azure Function Action](https://github.com/marketplace/actions/azure-functions-action).
+
+This repository uses the [Linux dotnet function app template](https://github.com/Azure/actions-workflow-samples/blob/master/FunctionApp/linux-dotnet-functionapp-on-azure.yml).
+
+### Security
 
 This section goes through security improvements applied to the Azure Event Hubs > Stream Analytics > Azure Function data flow.
 
-### Set a budget and monitor
+#### Set a budget and monitor
 
 A budget can monitor the actual or forecast cost on the resources in the tutorial and notify you of issues. Here is an example to get alerts based on a spend:
 
@@ -86,9 +94,9 @@ A budget can monitor the actual or forecast cost on the resources in the tutoria
 2. Add a new budget and set a monthly forecast. If redis cache is turned off, the monthly forecast for the tutorial resources should be lower then $50. Set $50 as the monthly budget.
 3. Set alerts for the budget. Optionally, set up an action group with notifications, actions, and tasks than can be perform in case an alert is generated.
 
-### Event Hubs
+#### Event Hubs
 
-#### Network security
+##### Network security
 
 Using the network firewall in Event Hubs, restrict IPs to know callers of the Event Hub. For the tutorial, it should be your IP address or range and trusted Microsoft services like Stream Analytics. In the Event Hub resource:
 
@@ -96,7 +104,7 @@ Using the network firewall in Event Hubs, restrict IPs to know callers of the Ev
 2. For **Allow access from**: Check `Selected networks`
 3. In the firewall, enter your IP address or range. For example if your IP is `38.22.189.24`, you can enter that IP or range `38.22.189.0/24` to cover hosts in the 38.22.189.0 subnet.
 
-##### Give access to Stream Analytics
+###### Give access to Stream Analytics
 
 1. Go to Networking > Firewalls and virtual networks
 2. For **Allow trusted Microsoft services to bypass this firewall?** Check `Yes`.
