@@ -123,6 +123,6 @@ Use a [Function access key](https://docs.microsoft.com/en-us/azure/azure-functio
 
 #### Network firewall
 
-As of May 2021, the recommended way to secure the Stream Analytics to Azure Function is to use a [Stream Analytics Cluster and private endpoint](https://docs.microsoft.com/en-us/azure/stream-analytics/private-endpoints). This solution restrict traffic to the function only to the Stream analytics.
+As of May 2021, the recommended way to secure the Stream Analytics to Azure Function is to use a [Stream Analytics Cluster and private endpoint](https://docs.microsoft.com/en-us/azure/stream-analytics/private-endpoints). This solution restricts traffic to the function only from the Stream analytics.
 
-If that solution is not possible, for example a cluster is expensive, it is possible to restrict traffic to the function using access restrictions and restrict traffic to the Azure cloud resources in your region by using the [Azure IP range](https://www.microsoft.com/en-us/download/details.aspx?id=56519). This reduces the IPs that could call the function, though the function is still expose to other IP ranges in Azure.
+If that solution is not possible, for example a cluster is expensive, it is possible to restrict traffic to the function using access restrictions and restrict traffic to the Azure cloud resources in your region by using the [Azure IP range](https://www.microsoft.com/en-us/download/details.aspx?id=56519). This reduces the IPs that could call the function, though the function still can be called to other IP ranges in Azure.
