@@ -26,8 +26,8 @@ List of things I had to choose in the tutorial where the tutorial doesn't say ex
 ### Create a function in Azure Functions that can write data to Azure Cache for Redis
 
 - Created function using the command line interface (CLI) tutorial called [Quickstart: Create a C# function in Azure from the command line](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-csharp?tabs=azure-cli%2Ccurl) using the Gitpod development environment in this repository. [Launch the online development environment](https://gitpod.io/#https://github.com/justintungonline/azure-sa-function-tests)
-    - The `HttpExample.cs` is modified from the tutorial to fit a C# implementation instead of a C# script.
-    - Azure Functions and Redis cache has a [known issue](https://github.com/StackExchange/StackExchange.Redis/issues/1655) where this line below needs to be added to the `.csproj` file . Without the line, there will be a `Could not load file or assembly 'System.IO.Pipelines` error when the function tries to get a connection.
+  - The `HttpExample.cs` is modified from the tutorial to fit a C# implementation instead of a C# script.
+  - Azure Functions and Redis cache has a [known issue](https://github.com/StackExchange/StackExchange.Redis/issues/1655) where this line below needs to be added to the `.csproj` file . Without the line, there will be a `Could not load file or assembly 'System.IO.Pipelines` error when the function tries to get a connection.
 
     ```xml
     <PropertyGroup>
@@ -36,6 +36,7 @@ List of things I had to choose in the tutorial where the tutorial doesn't say ex
         <_FunctionsSkipCleanOutput>true</_FunctionsSkipCleanOutput> <!-- *** this line was added *** -->
     </PropertyGroup>
     ```
+
 - The Gitpod environment is this repository has all the prerequisites for the CLI tutorial (dotnetcore, Azure CLI, Azure Function Tools Core ) preinstalled in the workspace's Ubuntu image. No local installs are required. The image has been tested with the steps in the tutorial to build the function and deploy it to Azure.
 - Dependencies to install StackExchange.Redis and Functions using dotnet CLI in project
 
@@ -72,3 +73,48 @@ az functionapp create --resource-group <my-resource-group-name> --consumption-pl
 # Publish c# function
 func azure functionapp publish sandboxfunction1 --csharp
 ```
+
+## Post Tutorial Security Improvements
+
+This section goes through security improvements applied to the Azure Event Hubs > Stream Analytics > Azure Function data flow.
+
+### Set a budget and monitor
+
+A budget can monitor the actual or forecast cost on the resources in the tutorial and notify you of issues. Here is an example to get alerts based on a spend:
+
+1. In the resource group holding all the tutorial resources, go to Budgets.
+2. Add a new budget and set a monthly forecast. If redis cache is turned off, the monthly forecast for the tutorial resources should be lower then $50. Set $50 as the monthly budget.
+3. Set alerts for the budget. Optionally, set up an action group with notifications, actions, and tasks than can be perform in case an alert is generated.
+
+### Event Hubs
+
+#### Network security
+
+Using the network firewall in Event Hubs, restrict IPs to know callers of the Event Hub. For the tutorial, it should be your IP address or range and trusted Microsoft services like Stream Analytics. In the Event Hub resource:
+
+1. Go to Networking > Firewalls and virtual networks
+2. For **Allow access from**: Check `Selected networks`
+3. In the firewall, enter your IP address or range. For example if your IP is `38.22.189.24`, you can enter that IP or range `38.22.189.0/24` to cover hosts in the 38.22.189.0 subnet.
+
+##### Give access to Stream Analytics
+
+1. Go to Networking > Firewalls and virtual networks
+2. For **Allow trusted Microsoft services to bypass this firewall?** Check `Yes`.
+
+- This setting ensures [Stream Analytics can connect](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-ip-filtering) to Event Hubs.
+- The Stream Analytics job should be configured to use a managed identity to access the event hub. In the Stream Analytics resource, activate its managed identity and reconfigure the input for the Event Hub to use managed identity. [Give the managed identity](https://docs.microsoft.com/en-us/azure/stream-analytics/event-hubs-managed-identity) the role to access the Event Hub. This requires permissions to change resource roles.
+- If managed identity cannot be configured, but restriction IP address is wanted, use the [Azure IP range](https://www.microsoft.com/en-us/download/details.aspx?id=56519) to restrict IP ranges to Azure cloud resources in your region.
+- Note, if the setting is off, Stream Analytics will have a failed message in JSON like `The streaming job failed: Stream Analytics job has validation errors: Access to EventHub sb://myeventhub.servicebus.windows.net/sbeventhub is not authorized.... status-code: 401`
+- After reconfiguring the input in Stream Analytics, test the connection.
+
+### Azure Function
+
+#### Access with Key
+
+Use a [Function access key](https://docs.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=csharp#authorization-keys) to restrict access to the function and disable anonymous access. The key requires more set up then anonymous access in the code, but prevents access if it is exposed to the internet.
+
+#### Network firewall
+
+As of May 2021, the recommended way to secure the Stream Analytics to Azure Function is to use a [Stream Analytics Cluster and private endpoint](https://docs.microsoft.com/en-us/azure/stream-analytics/private-endpoints). This solution restrict traffic to the function only to the Stream analytics.
+
+If that solution is not possible, for example a cluster is expensive, it is possible to restrict traffic to the function using access restrictions and restrict traffic to the Azure cloud resources in your region by using the [Azure IP range](https://www.microsoft.com/en-us/download/details.aspx?id=56519). This reduces the IPs that could call the function, though the function is still expose to other IP ranges in Azure.
