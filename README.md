@@ -2,7 +2,7 @@
 
 The repository is for testing Azure Stream Analytics working with Azure Functions and following steps in this [Microsoft Tutorial: Run Azure Functions from Azure Stream Analytics jobs](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-with-azure-functions)
 
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/justintungonline/azure-sa-function-tests)
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/justunsix/azure-sa-function-tests)
 
 ## Tips and Workarounds Used to Complete the Tutorial
 
@@ -25,7 +25,7 @@ List of things I had to choose in the tutorial where the tutorial doesn't say ex
 
 ### Create a function in Azure Functions that can write data to Azure Cache for Redis
 
-- Created function using the command line interface (CLI) tutorial called [Quickstart: Create a C# function in Azure from the command line](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-csharp?tabs=azure-cli%2Ccurl) using the Gitpod development environment in this repository. [Launch the online development environment](https://gitpod.io/#https://github.com/justintungonline/azure-sa-function-tests)
+- Created function using the command line interface (CLI) tutorial called [Quickstart: Create a C# function in Azure from the command line](https://docs.microsoft.com/en-us/azure/azure-functions/create-first-function-cli-csharp?tabs=azure-cli%2Ccurl) using the Gitpod development environment in this repository. [Launch the online development environment](https://gitpod.io/#https://github.com/justunsix/azure-sa-function-tests)
   - The `HttpExample.cs` is modified from the tutorial to fit a C# implementation instead of a C# script.
   - Azure Functions and Redis cache has a [known issue](https://github.com/StackExchange/StackExchange.Redis/issues/1655) where this line below needs to be added to the `.csproj` file . Without the line, there will be a `Could not load file or assembly 'System.IO.Pipelines` error when the function tries to get a connection.
 
